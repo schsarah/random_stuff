@@ -3,9 +3,15 @@
 import argparse, sys, os, gzip, tempfile
 import numpy as np
 
-from multiprocessing import Process, Queue
-from multiprocessing.queues import SimpleQueue
 from threading import Thread
+
+from multiprocessing import Process
+
+if sys.version_info>=(3,0):
+    from multiprocessing import SimpleQueue
+else:
+    from multiprocessing.queues import SimpleQueue
+
 from time import sleep
 
 #add parent directory to path in case genomics.py is there instead of on the path
